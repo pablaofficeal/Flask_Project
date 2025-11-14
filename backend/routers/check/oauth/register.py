@@ -8,9 +8,33 @@ register_bpp = Blueprint('register_bpp', __name__)
 
 @register_bpp.route('/register', methods=['GET', 'POST'])
 def register():
-    """ Добавляем логику для регестрации юзера и записи в бд """
+    """
+    Система регистрации нового пользователя
+     ---
+    parameters:
+      - name: username
+        in: formData
+        type: string
+        required: true
+        description: Имя пользователя
+      - name: email
+        in: formData
+        type: string
+        required: true
+        description: Email пользователя
+      - name: password
+        in: formData
+        type: string
+        required: true
+        description: Пароль пользователя
+    responses:
+      200:
+        description: Успешная регистрация
+    
+      400:
+        description: Неверный запрос, проверьте данные
+    """
     if request.method == 'POST':
-        """ Добавляем логику для регестрации юзера и записи в бд """
         username = request.form['username']
         email = request.form['email']
         password = request.form['password']
