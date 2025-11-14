@@ -37,7 +37,6 @@ GITHUB_REDIRECT_URI=http://localhost:5000/auth/github/callback # GitHub OAuth2 r
 
 
 # ────────── GitHub OAuth2 Client Configuration ──────────
-
 GITHUB_CLIENT_ID=#################### # GitHub OAuth2 client ID
 GITHUB_CLIENT_SECRET=######################## # GitHub OAuth2 client secret
 
