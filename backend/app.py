@@ -7,7 +7,9 @@ import logging
 from import_all_bp import register_blueprints
 from import_router_bp import *
 
-app = Flask(__name__)
+app = Flask(__name__, 
+                    static_folder='../frontend/static', 
+                    template_folder='../frontend/templates')
 
 app.config.from_object(Config)
 
