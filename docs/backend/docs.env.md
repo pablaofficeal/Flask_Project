@@ -1,5 +1,11 @@
 # Environment Variables
 
+---
+
+## .env не коммитится в Git, потому что там секреты.
+
+---
+
 ```.env
 SECRET_KEY=my_secret_key  # Secret key for session management
 DATABASE_URL=sqlite:///test.db  # Database URL for SQLAlchemy
