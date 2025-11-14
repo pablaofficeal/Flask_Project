@@ -1,8 +1,8 @@
-# Environment Variables
+# Документация .env файла
 
 ---
 
-## .env не коммитится в Git, потому что там секреты.
+## Важно: .env не коммитится в Git, потому что там секреты.
 
 ---
 
@@ -17,8 +17,8 @@ PORT=5000 # Port number to bind the server to
 DEBUG=True # Whether to run the server in debug mode
 
 # ────────── Google OAuth2 Configuration ──────────
-GOOGLE_CLIENT_ID=####################################################################### # Google OAuth2 client ID
-GOOGLE_CLIENT_SECRET=############################################  # Google OAuth2 client secret
+GOOGLE_CLIENT_ID=your_google_client_id # Google OAuth2 client ID
+GOOGLE_CLIENT_SECRET=your_google_client_secret # Google OAuth2 client secret
 
 # ────────── Session Cookie Configuration ──────────
 SESSION_COOKIE_SAMESITE=None # SameSite policy for session cookie
@@ -37,8 +37,13 @@ GITHUB_REDIRECT_URI=http://localhost:5000/auth/github/callback # GitHub OAuth2 r
 
 
 # ────────── GitHub OAuth2 Client Configuration ──────────
-GITHUB_CLIENT_ID=#################### # GitHub OAuth2 client ID
-GITHUB_CLIENT_SECRET=######################## # GitHub OAuth2 client secret
-
-
+GITHUB_CLIENT_ID=your_github_client_id # GitHub OAuth2 client ID
+GITHUB_CLIENT_SECRET=your_github_client_secret # GitHub OAuth2 client secret
 ```
+
+---
+# Более расширенная документация находится тут
+
+- **[GitHub OAuth2 Документация](docs/docs/github_oauth2.md)**
+- **[Google OAuth2 Документация](docs/docs/google_oauth2.md)**
+- **[Как настроить Cookie](docs/docs/cookie_session.md)**
