@@ -339,7 +339,7 @@
                 <div class="form-group">
                     <label class="form-label" for="password">Password</label>
                     <div class="password-container">
-                        <input type="password" id="password" class="form-input" placeholder="Create a password"
+                        <input type="password" id="password" name="password" class="form-input" placeholder="Create a password"
                             required>
                         <button type="button" class="toggle-password" id="togglePassword">
                             <i class="far fa-eye"></i>
@@ -399,23 +399,8 @@
 
         // Настройка переключателей пароля
         setupPasswordToggle('password', 'togglePassword');
-        setupPasswordToggle('confirmPassword', 'toggleConfirmPassword');
 
-        // Обработка формы
-        document.getElementById('registerForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-
-            if (password !== confirmPassword) {
-                alert('Passwords do not match!');
-                return;
-            }
-
-            // Здесь будет код для отправки формы
-            alert('Registration successful!');
-        });
+        // Обработка формы - форма отправляется автоматически на сервер
 
         // Социальные кнопки
         document.querySelector('.google-btn').addEventListener('click', function () {

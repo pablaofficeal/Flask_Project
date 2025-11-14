@@ -19,4 +19,4 @@ def register():
         db.session.add(user)
         db.session.commit()
         return redirect(url_for('login_bpp.login'))
-    return render_template('all_login/register.html')
+    return render_template('register.html')
