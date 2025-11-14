@@ -44,6 +44,4 @@ GITHUB_CLIENT_SECRET=your_github_client_secret # GitHub OAuth2 client secret
 ---
 # Более расширенная документация находится тут
 
-- **[GitHub OAuth2 Документация](docs/github_oauth2.md)**
-- **[Google OAuth2 Документация](docs/google_oauth2.md)**
-- **[Как настроить Cookie](docs/cookie_session.md)**
+
