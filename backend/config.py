@@ -37,4 +37,4 @@ class Config:
     SESSION_COOKIE_SAMESITE = 'None'  # Изменено с 'None' на 'Lax' для лучшей совместимости
     SESSION_COOKIE_SECURE = False  # Изменено на False для development среды
     SESSION_COOKIE_HTTPONLY = True
-    SESSION_COOKIE_KEY = '2yD^OIe9uLVo.3<!O"wd_DUP2msa}9Sa4l/88`]O_)Op^Dho'
+    SESSION_COOKIE_KEY = os.getenv("SESSION_COOKIE_KEY")
