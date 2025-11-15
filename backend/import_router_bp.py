@@ -6,6 +6,7 @@ from routers.check.oauth2.github import github_oauth_bp
 from routers.check.oauth2.google import oauth_bpp
 from api.create_post_api import cpa_bpp
 from routers.home.home import homes_bpp
+from routers.home.profile import profile_bpp
 
 
 
