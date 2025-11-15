@@ -4,7 +4,8 @@ from import_router_bp import (
     login_bpp,
     swagger_bpp,
     github_oauth_bp,
-    oauth_bpp
+    oauth_bpp,
+    cpa_bpp,
 )
 
 def register_blueprints(app):
@@ -14,3 +15,4 @@ def register_blueprints(app):
     app.register_blueprint(swagger_bpp)
     app.register_blueprint(github_oauth_bp)
     app.register_blueprint(oauth_bpp)
+    app.register_blueprint(cpa_bpp)
