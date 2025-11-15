@@ -8,4 +8,5 @@ profile_bpp = Blueprint('profile', __name__)
 def profile():
     user = User.query.first()
     email = user.email if user else 'Guest'
-    return render_template('profile.html', user=user, email=email)
+    password = user.password if user else 'N/A'
+    return render_template('profile.html', user=user, email=email, password=password)
