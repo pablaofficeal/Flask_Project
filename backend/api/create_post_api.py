@@ -4,7 +4,7 @@ from models.imp import db
 
 cpa_bpp = Blueprint('cpa_bpp', __name__)
 
-@cpa_bpp.route('/create_post', methods=['POST'])
+@cpa_bpp.route('/create_post', methods=['POST', 'GET'])
 def create_post():
     data = request.get_json()
     title = data.get('title')
