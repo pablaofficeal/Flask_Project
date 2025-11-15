@@ -13,6 +13,12 @@ app = Flask(__name__,
                     static_folder='../frontend/static', 
                     template_folder='../frontend/templates')
 
+if not os.path.exists('logs'):
+    os.makedirs('logs')
+
+logging.basicConfig(level=Config.LOG_LEVEL, filename=Config.LOG_FILE,
+                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
 app.config.from_object(Config)
 
 register_blueprints(app)

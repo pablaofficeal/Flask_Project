@@ -12,6 +12,9 @@ class Config:
     PORT = os.getenv("PORT")
     DEBUG = os.getenv("DEBUG")
 
+    LOG_LEVEL = os.getenv("LOG_LEVEL")
+    LOG_FILE = os.getenv("LOG_FILE")
+
     # Google OAuth2 Configuration
     GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
     GOOGLE_CLIENT_SECRET = os.getenv("GOOGLE_CLIENT_SECRET")
