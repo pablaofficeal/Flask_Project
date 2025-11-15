@@ -1,11 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/static/css/index.css">
 </head>
+
 <body>
-    
+    <div class="main-menu">
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/profile">Profile</a></li>
+        </ul>
+    </div>
+    <div class="profile-info">
+        <div class="user-foto">
+
+        </div>
+        <div class="user-username">
+            <h3>Name: {{ user.username }}</h3>
+        </div>
+        <div class="user-email">
+            <h3>Email: {{ user.email }}</h3>
+        </div>
+    </div>
 </body>
+
 </html>

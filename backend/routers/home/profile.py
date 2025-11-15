@@ -7,4 +7,5 @@ profile_bpp = Blueprint('profile', __name__)
 @profile_bpp.route('/profile')
 def profile():
     user = User.query.first()
-    return render_template('profile.html', user=user)
+    email = user.email if user else 'Guest'
+    return render_template('profile.html', user=user, email=email)
