@@ -1,5 +1,6 @@
 import os
 import logging
+from datetime import timedelta
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -28,3 +29,12 @@ class Config:
     GITHUB_USER_URL = os.getenv("GITHUB_USER_URL")
     GITHUB_EMAILS_URL = os.getenv("GITHUB_EMAILS_URL")
     GITHUB_REDIRECT_URI = os.getenv("GITHUB_REDIRECT_URI")
+
+
+    # Cookies settings
+    PERMANENT_SESSION_LIFETIME = timedelta(days=30)
+    SESSION_COOKIE_NAME = 'soundrush_session'
+    SESSION_COOKIE_SAMESITE = 'None'  # Изменено с 'None' на 'Lax' для лучшей совместимости
+    SESSION_COOKIE_SECURE = False  # Изменено на False для development среды
+    SESSION_COOKIE_HTTPONLY = True
+    SESSION_COOKIE_KEY = '2yD^OIe9uLVo.3<!O"wd_DUP2msa}9Sa4l/88`]O_)Op^Dho'
