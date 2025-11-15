@@ -5,6 +5,9 @@ from routers.swagger_bp import swagger_bpp
 from routers.check.oauth2.github import github_oauth_bp
 from routers.check.oauth2.google import oauth_bpp
 from api.create_post_api import cpa_bpp
+from routers.home.home import homes_bpp
+
+
 
 def register_blueprints(app):
     app.register_blueprint(home_bpp)
@@ -14,3 +17,4 @@ def register_blueprints(app):
     app.register_blueprint(github_oauth_bp)
     app.register_blueprint(oauth_bpp)
     app.register_blueprint(cpa_bpp)
+    app.register_blueprint(homes_bpp)

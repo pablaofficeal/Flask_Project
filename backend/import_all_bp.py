@@ -6,6 +6,7 @@ from import_router_bp import (
     github_oauth_bp,
     oauth_bpp,
     cpa_bpp,
+    homes_bpp,
 )
 
 def register_blueprints(app):
@@ -16,3 +17,4 @@ def register_blueprints(app):
     app.register_blueprint(github_oauth_bp)
     app.register_blueprint(oauth_bpp)
     app.register_blueprint(cpa_bpp)
+    app.register_blueprint(homes_bpp)
