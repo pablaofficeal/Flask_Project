@@ -8,6 +8,8 @@ from import_router_bp import (
     cpa_bpp,
     homes_bpp,
     profile_bpp,
+    dpa_bpp,
+    epa_bpp,
 )
 
 def register_blueprints(app):
@@ -20,3 +22,5 @@ def register_blueprints(app):
     app.register_blueprint(cpa_bpp)
     app.register_blueprint(homes_bpp)
     app.register_blueprint(profile_bpp)
+    app.register_blueprint(dpa_bpp)
+    app.register_blueprint(epa_bpp)

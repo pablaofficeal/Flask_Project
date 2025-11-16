@@ -7,6 +7,8 @@ from routers.check.oauth2.google import oauth_bpp
 from api.create_post_api import cpa_bpp
 from routers.home.home import homes_bpp
 from routers.home.profile import profile_bpp
+from api.delete_post_api import dpa_bpp
+from api.edit_post_api import epa_bpp
 
 
 
@@ -19,3 +21,6 @@ def register_blueprints(app):
     app.register_blueprint(oauth_bpp)
     app.register_blueprint(cpa_bpp)
     app.register_blueprint(homes_bpp)
+    app.register_blueprint(profile_bpp)
+    app.register_blueprint(dpa_bpp)
+    app.register_blueprint(epa_bpp)
