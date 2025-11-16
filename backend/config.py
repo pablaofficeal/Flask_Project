@@ -10,7 +10,7 @@ class Config:
 
     IP = os.getenv("IP")
     PORT = os.getenv("PORT")
-    DEBUG = os.getenv("DEBUG")
+    DEBUG = "False"
 
     LOG_LEVEL = os.getenv("LOG_LEVEL")
     LOG_FILE = os.getenv("LOG_FILE")

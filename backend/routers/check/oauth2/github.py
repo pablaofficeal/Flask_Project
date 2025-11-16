@@ -129,7 +129,7 @@ def github_callback():
         
         if not primary_email:
             flash('GitHub не предоставил ваш email. Пожалуйста, убедитесь, что ваш email публичен в настройках GitHub.', 'error')
-            return redirect(url_for('oauth2.login'))
+            return redirect(url_for('login_bpp.login'))
         
         # Получаем данные пользователя
         github_id = user_data.get('id')

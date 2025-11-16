@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for, session, jsonify
 from models.main_rou_imp_db import User
 from datetime import datetime
 from models.imp import db
@@ -39,8 +39,23 @@ def register():
         email = request.form['email']
         password = request.form['password']
         
-        user = User(username=username, password=password, email=email, created_at=datetime.now())
+        # Проверяем, существует ли уже пользователь с таким email
+        if User.query.filter_by(email=email).first():
+            return jsonify({"message": "User already exists"}), 400
+        
+        # Создаем нового пользователя
+        user = User(username=username, email=email, created_at=datetime.now())
+        user.set_password(password)
         db.session.add(user)
         db.session.commit()
+
+        # Добавляем пользователя в сессию
+        session['user_id'] = user.id
+        session['username'] = username
+        session['email'] = email
+        
+        # Перенаправляем на страницу входа
         return redirect(url_for('login_bpp.login'))
+    
+    # Для GET запроса просто показываем форму регистрации
     return render_template('register.html')
