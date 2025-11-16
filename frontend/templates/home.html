@@ -16,5 +16,13 @@
     {% for user in users %}
         <h1>Welcome, {{ user.username }}</h1>
     {% endfor %}
+    <div class="post-container">
+        {% for post in posts %}
+            <div class="post">
+                <h2>{{ post.title }}</h2>
+                <p>{{ post.content }}</p>
+            </div>
+        {% endfor %}
+    </div>
 </body>
 </html>
