@@ -13,9 +13,7 @@ login_bpp = Blueprint('login_bpp', __name__)
 
 @login_bpp.route('/login', methods=['GET', 'POST'])
 def login():
-    """ Добавляем логику для логина юзера """
     if request.method == 'POST':
-        """ Добавляем логику для логина юзера """
         username = request.form['username']
         password = request.form['password']
         

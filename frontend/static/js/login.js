@@ -24,11 +24,8 @@ setupPasswordToggle('password', 'togglePassword');
 
 // Обработка формы - форма отправляется автоматически на сервер
 
-// Социальные кнопки
-document.querySelector('.google-btn').addEventListener('click', function () {
-    alert('Google registration would be implemented here');
-});
+document.getElementById('loginForm').addEventListener('submit', function (e) {
+    e.preventDefault(); // Предотвращаем стандартное поведение формы
 
-document.querySelector('.github-btn').addEventListener('click', function () {
-    alert('GitHub registration would be implemented here');
+    const formData = new FormData(this);
 });

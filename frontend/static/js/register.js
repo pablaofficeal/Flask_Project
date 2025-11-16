@@ -22,13 +22,6 @@ function setupPasswordToggle(passwordId, toggleId) {
 // Настройка переключателей пароля
 setupPasswordToggle('password', 'togglePassword');
 
-// Обработка формы - форма отправляется автоматически на сервер
+console.log('Register JS loaded');
 
-// Социальные кнопки
-document.querySelector('.google-btn').addEventListener('click', function () {
-    alert('Google registration would be implemented here');
-});
-
-document.querySelector('.github-btn').addEventListener('click', function () {
-    alert('GitHub registration would be implemented here');
-});
+console.log('User registration script is running.');
