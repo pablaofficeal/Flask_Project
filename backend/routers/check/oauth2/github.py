@@ -45,7 +45,7 @@ def github_login():
     }
     
     # Создаем URL для авторизации
-    auth_url = f"{GITHUB_AUTHORIZE_URL}?{urlencode(params)}"
+    auth_url = GITHUB_AUTHORIZE_URL + '?' + '&'.join([f"{k}={v}" for k, v in params.items()])
     
     return redirect(auth_url)
 
@@ -77,7 +77,7 @@ def github_callback():
     
     headers = {
         'Accept': 'application/json',
-        'User-Agent': 'CraftNode'
+        'User-Agent': 'Love-Code-Bot-Platform'
     }
     
     try:
@@ -186,14 +186,3 @@ def github_callback():
     except Exception as e:
         flash(f'Произошла ошибка: {str(e)}', 'error')
         return redirect(url_for('login_bpp.login'))
-
-@github_oauth_bp.route('/auth/github/link', methods=['POST'])
-def link_github_account():
-    
-    return jsonify({'message': 'Функция в разработке'}), 501
-
-@github_oauth_bp.route('/auth/github/unlink', methods=['POST'])  
-def unlink_github_account():
-    
-    # Здесь можно добавить логику для отвязки GitHub аккаунта
-    return jsonify({'message': 'Функция в разработке'}), 501

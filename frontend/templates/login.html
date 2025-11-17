@@ -10,13 +10,6 @@
 </head>
 
 <body>
-    <div class="main-menu">
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/register">Register</a></li>
-            <li><a href="/login">Login</a></li>
-        </ul>
-    </div>
 
     {% with messages = get_flashed_messages() %} {% if messages %} {%
     for message in messages %}
@@ -24,6 +17,14 @@
         {{ message }}
     </div>
     {% endfor %} {% endif %} {% endwith %}
+
+    <div class="main-menu">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/register">Register</a></li>
+            <li><a href="/login">Login</a></li>
+        </ul>
+    </div>
 
     <div class="login-section">
         <div class="login-container">
@@ -67,7 +68,6 @@
         </div>
     </div>
 
-    <script src="/static/js/login.js"></script>
 </body>
 
 </html>
