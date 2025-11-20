@@ -10,7 +10,10 @@ from import_router_bp import (
     profile_bpp,
     dpa_bpp,
     epa_bpp,
+    logout_bpp,
 )
+
+
 
 def register_blueprints(app):
     app.register_blueprint(home_bpp)
@@ -24,3 +27,4 @@ def register_blueprints(app):
     app.register_blueprint(profile_bpp)
     app.register_blueprint(dpa_bpp)
     app.register_blueprint(epa_bpp)
+    app.register_blueprint(logout_bpp)
