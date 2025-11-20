@@ -98,4 +98,4 @@ def google_callback():
     user.last_login = datetime.utcnow()
     db.session.commit()
 
-    return redirect(url_for('homes_bpp.home'))
+    return redirect(url_for('homess_bpp.home'))

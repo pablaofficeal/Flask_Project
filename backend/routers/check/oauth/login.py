@@ -13,7 +13,9 @@ login_bpp = Blueprint('login_bpp', __name__)
 
 @login_bpp.route('/login', methods=['GET', 'POST'])
 def login():
+    """ Добавляем логику для логина юзера """
     if request.method == 'POST':
+        """ Добавляем логику для логина юзера """
         username = request.form['username']
         password = request.form['password']
         
@@ -22,7 +24,9 @@ def login():
             session['user_id'] = user.id
             session['username'] = username
             session['email'] = user.email
-            return redirect(url_for('homes_bpp.home'))
+            from flask import current_app
+            current_app.logger.info(f'Regular login: User {username} logged in successfully, session: {dict(session)}')
+            return redirect(url_for('homess_bpp.home'))
         else:
             return jsonify({"message": "Invalid credentials"}), 401
     return render_template('login.html')

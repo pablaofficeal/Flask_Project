@@ -33,7 +33,7 @@ class Config:
     # Cookies settings
     PERMANENT_SESSION_LIFETIME = timedelta(days=30)
     SESSION_COOKIE_NAME = 'soundrush_session'
-    SESSION_COOKIE_SAMESITE = 'None'  # Изменено с 'None' на 'Lax' для лучшей совместимости
-    SESSION_COOKIE_SECURE = False  # Изменено на False для development среды
+    SESSION_COOKIE_SAMESITE = 'Lax'  # Для локальной разработки используем Lax вместо None
+    SESSION_COOKIE_SECURE = False  # Для локальной разработки без HTTPS
     SESSION_COOKIE_HTTPONLY = True
     SESSION_COOKIE_KEY = os.getenv("SESSION_COOKIE_KEY")

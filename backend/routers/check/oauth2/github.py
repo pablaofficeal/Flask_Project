@@ -1,4 +1,4 @@
-from flask import Blueprint, flash, redirect, url_for, request, session, jsonify
+from flask import Blueprint, flash, redirect, url_for, request, session, jsonify, current_app
 from models.main_rou_imp_db import User
 from models.imp import db
 from datetime import datetime
@@ -52,9 +52,12 @@ def github_login():
 @github_oauth_bp.route('/auth/github/callback')
 def github_callback():
     """Обработка callback от GitHub"""
+    current_app.logger.info(f'GitHub OAuth: Callback received, state: {request.args.get("state")}, session state: {session.get("github_state")}')
+    
     # Проверяем state для безопасности
     state = request.args.get('state')
     if not state or state != session.get('github_state'):
+        current_app.logger.error(f'GitHub OAuth: State mismatch! Expected: {session.get("github_state")}, Got: {state}')
         flash('Ошибка безопасности. Попробуйте войти снова.', 'error')
         return redirect(url_for('login_bpp.login'))
     
@@ -63,7 +66,9 @@ def github_callback():
     
     # Получаем код авторизации
     code = request.args.get('code')
+    current_app.logger.info(f'GitHub OAuth: Authorization code received: {code is not None}')
     if not code:
+        current_app.logger.error('GitHub OAuth: No authorization code received')
         flash('GitHub авторизация не удалась.', 'error')
         return redirect(url_for('login_bpp.login'))
     
@@ -154,14 +159,15 @@ def github_callback():
             
             user = User(
                 username=username,
-                email=primary_email,
-                role='user'
+                email=primary_email
             )
             # Устанавливаем случайный пароль (пользователь не будет его знать)
             user.set_password(os.urandom(32).hex())
             
             db.session.add(user)
             db.session.commit()
+            
+            current_app.logger.info(f'GitHub OAuth: New user created - username: {username}, email: {primary_email}')
             
             if action == 'register':
                 flash(f'🎉 Регистрация успешна! Добро пожаловать, {username}!', 'success')
@@ -175,10 +181,19 @@ def github_callback():
         
         # Авторизуем пользователя
         session.permanent = True
+        session['user_id'] = user.id
+        session['username'] = user.username
+        session['email'] = user.email
         user.last_login = datetime.utcnow()
         db.session.commit()
         
-        return redirect(url_for('homes_bpp.home'))
+        current_app.logger.info(f'GitHub OAuth: User {user.username} logged in successfully, user_id: {user.id}')
+        current_app.logger.info(f'GitHub OAuth: Session data - user_id: {session.get("user_id")}, username: {session.get("username")}')
+        
+        # Проверяем, куда перенаправляем
+        redirect_url = url_for('homes_bpp.home')
+        current_app.logger.info(f'GitHub OAuth: Redirecting to home: {redirect_url}')
+        return redirect(redirect_url)
         
     except requests.exceptions.RequestException as e:
         flash(f'Ошибка при связи с GitHub: {str(e)}', 'error')

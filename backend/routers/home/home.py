@@ -6,5 +6,6 @@ homes_bpp = Blueprint('homes_bpp', __name__)
 
 @homes_bpp.route('/home')
 def home():
+    
     users = User.query.all()
     return render_template('home.html', users=users)
