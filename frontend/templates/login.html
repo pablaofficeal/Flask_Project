@@ -11,13 +11,7 @@
 
 <body>
 
-    {% with messages = get_flashed_messages() %} {% if messages %} {%
-    for message in messages %}
-    <div class="notification error show" style="position: relative; transform: none; margin-bottom: 1rem">
-        {{ message }}
-    </div>
-    {% endfor %} {% endif %} {% endwith %}
-
+    
     <div class="main-menu">
         <ul>
             <li><a href="/">Home</a></li>
@@ -25,7 +19,14 @@
             <li><a href="/login">Login</a></li>
         </ul>
     </div>
-
+    
+    {% with messages = get_flashed_messages() %} {% if messages %} {%
+    for message in messages %}
+    <div class="notification error show" style="position: relative; transform: none; margin-bottom: 1rem">
+        {{ message }}
+    </div>
+    {% endfor %} {% endif %} {% endwith %}
+    
     <div class="login-section">
         <div class="login-container">
             <h2 class="login-title">Login</h2>
