@@ -25,5 +25,5 @@ def create_post():
         )
         db.session.add(new_post)
         db.session.commit()
-        return redirect(url_for('home.home'))
+        return redirect(url_for('homes_bpp.home'))
     return render_template('create-post.html')
