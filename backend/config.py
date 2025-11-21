@@ -15,11 +15,9 @@ class Config:
     LOG_LEVEL = os.getenv("LOG_LEVEL")
     LOG_FILE = os.getenv("LOG_FILE")
 
-    # Google OAuth2 Configuration
     GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
     GOOGLE_CLIENT_SECRET = os.getenv("GOOGLE_CLIENT_SECRET")
 
-    # GitHub OAuth2 Configuration
     GITHUB_CLIENT_ID = os.getenv("GITHUB_CLIENT_ID")
     GITHUB_CLIENT_SECRET = os.getenv("GITHUB_CLIENT_SECRET")
 
@@ -29,8 +27,6 @@ class Config:
     GITHUB_EMAILS_URL = os.getenv("GITHUB_EMAILS_URL")
     GITHUB_REDIRECT_URI = os.getenv("GITHUB_REDIRECT_URI")
 
-
-    # Cookies settings
     PERMANENT_SESSION_LIFETIME = timedelta(days=30)
     SESSION_COOKIE_NAME = 'soundrush_session'
     SESSION_COOKIE_SAMESITE = 'Lax'
