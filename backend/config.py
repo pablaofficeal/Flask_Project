@@ -32,3 +32,8 @@ class Config:
     SESSION_COOKIE_SECURE = False
     SESSION_COOKIE_HTTPONLY = True
     SESSION_COOKIE_KEY = os.getenv("SESSION_COOKIE_KEY")
+
+class TestConfig(Config):
+    TESTING = True
+    SQLALCHEMY_DATABASE_URI = os.getenv("TEST_DATABASE_URL")
+    DEBUG = "True"
