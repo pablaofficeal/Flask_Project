@@ -10,6 +10,7 @@ from routers.home.profile import profile_bpp
 from api.delete_post_api import dpa_bpp
 from api.edit_post_api import epa_bpp
 from routers.check.oauth.logout import logout_bpp
+from routers.home.create_post import create_post_bpp
 
 
 
@@ -26,3 +27,4 @@ def register_blueprints(app):
     app.register_blueprint(dpa_bpp)
     app.register_blueprint(epa_bpp)
     app.register_blueprint(logout_bpp)
+    app.register_blueprint(create_post_bpp)

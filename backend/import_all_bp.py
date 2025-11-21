@@ -11,6 +11,7 @@ from import_router_bp import (
     dpa_bpp,
     epa_bpp,
     logout_bpp,
+    create_post_bpp,
 )
 
 
@@ -28,3 +29,4 @@ def register_blueprints(app):
     app.register_blueprint(dpa_bpp)
     app.register_blueprint(epa_bpp)
     app.register_blueprint(logout_bpp)
+    app.register_blueprint(create_post_bpp)
