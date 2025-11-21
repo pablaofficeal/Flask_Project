@@ -1,29 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flask Project - Home</title>
     <link rel="stylesheet" href="/static/css/index.css">
 </head>
+
 <body>
     <div class="main-menu">
         <ul>
             <li><a href="/home">Home</a></li>
             <li><a href="/profile">Profile</a></li>
+            <li><a href="/create_post">Create Post</a></li>
             <li><a href="/logout">Logout</a></li>
         </ul>
     </div>
-    {% for user in users %}
+    <div class="welcome-message">
+        {% for user in users %}
         <h1>Welcome, {{ user.username }}</h1>
-    {% endfor %}
+        {% endfor %}
+    </div>
     <div class="post-container">
         {% for post in posts %}
-            <div class="post">
-                <h2>{{ post.title }}</h2>
-                <p>{{ post.content }}</p>
-            </div>
+        <div class="post">
+            <h2>{{ post.title }}</h2>
+            <p>{{ post.content }}</p>
+        </div>
         {% endfor %}
     </div>
 </body>
+
 </html>
