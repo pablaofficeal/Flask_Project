@@ -4,8 +4,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class Config:
-    SECRET_KEY = os.getenv("SECRET_KEY")
     SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL")
+    SECRET_KEY = os.getenv("SECRET_KEY")
 
     IP = os.getenv("IP")
     PORT = os.getenv("PORT")
@@ -27,9 +27,9 @@ class Config:
     GITHUB_REDIRECT_URI = os.getenv("GITHUB_REDIRECT_URI")
 
     PERMANENT_SESSION_LIFETIME = timedelta(days=30)
-    SESSION_COOKIE_NAME = 'soundrush_session'
+    SESSION_COOKIE_NAME = 'session'
     SESSION_COOKIE_SAMESITE = 'Lax'
-    SESSION_COOKIE_SECURE = False
+    SESSION_COOKIE_SECURE = True
     SESSION_COOKIE_HTTPONLY = True
     SESSION_COOKIE_KEY = os.getenv("SESSION_COOKIE_KEY")
 

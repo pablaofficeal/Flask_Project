@@ -15,30 +15,14 @@
         </ul>
     </div>
     
-    <div class="start">
-        <h1>Это Учёбный Проект на Flask</h1>
-        <p>Добро пожаловать в мой учебный проект на Flask!</p>
-        <p>Здесь вы можете зарегистрироваться, войти в систему</p>
-        <p>И исследовать различные функции, реализованные с использованием Flask и других технологий.</p>
-    </div>
-    
-    <div class="image-test">
-        <p>Можно так даже в Flask</p>
-        <div class="gallery-container">
-            <div class="gallery-item">
-                <img src="/static/icon/depositphotos_137026300-stock-photo-programmer-working-in-a-software.jpg" alt="Test Image">
-            </div>
-            <div class="gallery-item">
-                <img src="/static/icon/depositphotos_671320912-stock-photo-programmer-developer-man-computer-coding.jpg" alt="Test Image 2">
-            </div>
-            <div class="gallery-item">
-                <img src="/static/icon/images (1).jpeg" alt="Programming Image">
-            </div>
+        <div class="post-container">
+        {% for post in posts %}
+        <div class="post">
+            <h2>{{ post.title }}</h2>
+            <p>{{ post.content }}</p>
+            <p>Author: {{ post.user.username }}</p>
         </div>
-        <div class="buttons">
-            <button id="prev">Prev</button>
-            <button id="next">Next</button>
-        </div>
+        {% endfor %}
     </div>
     
     <script src="/static/js/index.js"></script>
