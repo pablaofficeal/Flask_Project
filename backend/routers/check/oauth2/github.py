@@ -7,6 +7,7 @@ import os
 import secrets
 from config import Config
 from urllib.parse import urlencode
+from flask_login import login_user
 
 github_oauth_bp = Blueprint('github_oauth', __name__)
 
@@ -180,10 +181,8 @@ def github_callback():
                 flash(f'🎯 Вход выполнен успешно! Привет, {user.username}!', 'success')
         
         # Авторизуем пользователя
-        session.permanent = True
-        session['user_id'] = user.id
-        session['username'] = user.username
-        session['email'] = user.email
+        from flask_login import login_user
+        login_user(user, remember=True)
         user.last_login = datetime.utcnow()
         db.session.commit()
         
