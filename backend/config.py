@@ -32,6 +32,8 @@ class Config:
     SESSION_COOKIE_SECURE = False
     SESSION_COOKIE_HTTPONLY = True
     SESSION_COOKIE_KEY = os.getenv("SESSION_COOKIE_KEY")
+    SESSION_COOKIE_PATH = '/'
+    SESSION_COOKIE_DOMAIN = 'localhost'
 
 class TestConfig(Config):
     TESTING = True
