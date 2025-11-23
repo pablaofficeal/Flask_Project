@@ -11,8 +11,8 @@ class Config:
     PORT = os.getenv("PORT")
     DEBUG = "True"
 
-    LOG_LEVEL = os.getenv("LOG_LEVEL")
-    LOG_FILE = os.getenv("LOG_FILE")
+    LOG_LEVEL = "DEBUG"
+    LOG_FILE = "logs/app.log"
 
     GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
     GOOGLE_CLIENT_SECRET = os.getenv("GOOGLE_CLIENT_SECRET")

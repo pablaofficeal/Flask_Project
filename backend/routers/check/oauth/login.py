@@ -26,7 +26,7 @@ def login():
             session['email'] = user.email
             from flask import current_app
             current_app.logger.info(f'Regular login: User {username} logged in successfully, session: {dict(session)}')
-            return redirect(url_for('homess_bpp.home'))
+            return redirect(url_for('homes_bpp.home'))
         else:
             return jsonify({"message": "Invalid credentials"}), 401
     return render_template('login.html')
