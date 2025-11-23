@@ -5,3 +5,4 @@ swagger-ui-py
 requests
 flask_dance
 psycopg2-binary==2.9.7
+Flask-Login

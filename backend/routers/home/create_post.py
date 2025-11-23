@@ -4,6 +4,7 @@ from models.main_rou_imp_db import Post
 from models.imp import db
 from datetime import datetime
 
+
 create_post_bpp = Blueprint('create_post_bpp', __name__)
 
 @create_post_bpp.route('/create-post', methods=['GET', 'POST'])

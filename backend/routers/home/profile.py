@@ -1,12 +1,10 @@
 from flask import Blueprint, render_template
-from models.main_rou_imp_db import User
-from models.imp import db
+from flask_login import current_user, login_required
+from datetime import datetime
 
 profile_bpp = Blueprint('profile', __name__)
 
 @profile_bpp.route('/profile')
+@login_required
 def profile():
-    user = User.query.first()
-    email = user.email if user else 'Guest'
-    password = user.password if user else 'N/A'
-    return render_template('profile.html', user=user, email=email, password=password)
+    return render_template('profile.html', user=current_user, datetime=datetime.now())
