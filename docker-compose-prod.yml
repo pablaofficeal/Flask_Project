@@ -10,7 +10,7 @@ services:
       - ENV=production
     volumes:
       - ./backend:/app/backend
-      - ./backend/logs:/app/backend/logs
+      - ./backend/logs:/app/logs
     restart: always
     depends_on:
       - db
@@ -137,7 +137,7 @@ services:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=admin
       - GF_PATHS_PROVISIONING=/etc/grafana/provisioning
-      - GF_LOKI_DATASOURCE_URL=http://loki:3100
+      - GF_LOKI_DATASOURCE_URL=http://192.168.1.86:3100
     volumes:
       - grafana_data:/var/lib/grafana
       - ./grafana/provisioning:/etc/grafana/provisioning
