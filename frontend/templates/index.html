@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flask Project</title>
     <link rel="stylesheet" href="/static/css/index.css">
 </head>
+
 <body>
     <div class="main-menu">
         <ul>
@@ -14,8 +16,10 @@
             <li><a href="/login">Login</a></li>
         </ul>
     </div>
-    
-        <div class="post-container">
+    <div class="welcome">
+        <h1>Добро позаловать на форум</h1>
+    </div>
+    <div class="post-container">
         {% for post in posts %}
         <div class="post">
             <h2>{{ post.title }}</h2>
@@ -24,7 +28,8 @@
         </div>
         {% endfor %}
     </div>
-    
+
     <script src="/static/js/index.js"></script>
 </body>
+
 </html>

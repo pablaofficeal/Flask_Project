@@ -22,8 +22,6 @@
         <div class="register-container">
             <h2 class="register-title">Create Account</h2>
 
-
-
             <form id="registerForm" method="POST" action="/register">
                 <div class="form-group">
                     <label class="form-label" for="username">Username</label>
@@ -62,9 +60,10 @@
                 </div>
 
                 <div class="social-login">
-                    <button class="social-btn google-btn">
+                    <a href="/auth/google" class="social-btn google-btn">
                         <i class="fab fa-google"></i> Sign up with Google
-                    </button>
+                    </a>
+
                     <a href="/auth/github" class="social-btn github-btn">
                         <i class="fab fa-github"></i> Sign up with GitHub
                     </a>
