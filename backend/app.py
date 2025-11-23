@@ -21,15 +21,6 @@ logging.basicConfig(level=Config.LOG_LEVEL, filename=Config.LOG_FILE,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
 
-# Login Manager
-login_manager = LoginManager()
-login_manager.init_app(app)
-login_manager.login_view = 'login_bpp.login'
-login_manager.login_message = 'Please log in to access this page.'
-
-@login_manager.user_loader
-def load_user(user_id):
-    return db.session.get(User, int(user_id))
 
 app.config.from_object(Config)
 
@@ -41,5 +32,15 @@ with app.app_context():
     db.create_all()
 
 
+# Login Manager
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'login_bpp.login'
+login_manager.login_message = 'Please log in to access this page.'
+
+@login_manager.user_loader
+def load_user(user_id):
+    return db.session.get(User, int(user_id))
+
 if __name__ == '__main__':
-    app.run(debug=True, host=Config.IP, port=Config.PORT)
+    app.run(debug=False, host=Config.IP, port=Config.PORT)

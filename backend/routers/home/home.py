@@ -9,8 +9,8 @@ homes_bpp = Blueprint('homes_bpp', __name__)
 @homes_bpp.route('/home')
 @login_required
 def home():
-    from flask import current_app
-    current_app.logger.info(f"Home route accessed. Current user: {current_user}, is_authenticated: {current_user.is_authenticated}")
+    print("AUTH:", current_user.is_authenticated)
+    print("USER:", current_user.get_id())
     # Получаем все посты из базы данных
     posts = Post.query.all()
     # Получаем  пользователя из базы данных

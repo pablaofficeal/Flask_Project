@@ -5,11 +5,11 @@ load_dotenv()
 
 class Config:
     SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL")
-    SECRET_KEY = os.getenv("SECRET_KEY")
+    SECRET_KEY = "test_secret_key"
 
     IP = os.getenv("IP")
     PORT = os.getenv("PORT")
-    DEBUG = "True"
+    DEBUG = "False"
 
     LOG_LEVEL = "DEBUG"
     LOG_FILE = "logs/app.log"
@@ -29,7 +29,7 @@ class Config:
     PERMANENT_SESSION_LIFETIME = timedelta(days=30)
     SESSION_COOKIE_NAME = 'session'
     SESSION_COOKIE_SAMESITE = 'Lax'
-    SESSION_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = False
     SESSION_COOKIE_HTTPONLY = True
     SESSION_COOKIE_KEY = os.getenv("SESSION_COOKIE_KEY")
 
