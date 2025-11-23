@@ -8,6 +8,9 @@ services:
       - 5000:5000
     environment:
       - ENV=production
+    volumes:
+      - ./backend:/app/backend
+      - ./backend/logs:/app/backend/logs
     restart: always
     depends_on:
       - db

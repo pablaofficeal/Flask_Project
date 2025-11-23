@@ -1,3 +1,6 @@
-flask
+Flask
 dotenv
-prometheus-client
+Flask-SQLAlchemy
+swagger-ui-py
+requests
+flask_dance
