@@ -1,0 +1,66 @@
+groups:
+  - name: application_rules
+    interval: 30s
+    rules:
+      - record: app:http_requests:rate5m
+        expr: rate(http_requests_total[5m])
+
+      - record: app:http_requests:rate1m
+        expr: rate(http_requests_total[1m])
+
+      - record: app:error_rate:ratio5m
+        expr: rate(http_requests_total{status=~"5.."}[5m]) / rate(http_requests_total[5m])
+
+      - record: app:latency:p95_5m
+        expr: histogram_quantile(0.95, rate(http_request_duration_seconds_bucket[5m]))
+
+      - record: app:latency:p50_5m
+        expr: histogram_quantile(0.50, rate(http_request_duration_seconds_bucket[5m]))
+
+  - name: system_rules
+    interval: 30s
+    rules:
+      - record: node:cpu_utilization:percent
+        expr: 100 - (avg by(instance) (irate(node_cpu_seconds_total{mode="idle"}[5m])) * 100)
+
+      - record: node:memory_utilization:percent
+        expr: (1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) * 100
+
+      - record: node:disk_utilization:percent
+        expr: (1 - (node_filesystem_avail_bytes / node_filesystem_size_bytes)) * 100
+
+      - record: node:network_receive:rate5m
+        expr: rate(node_network_receive_bytes_total[5m])
+
+      - record: node:network_transmit:rate5m
+        expr: rate(node_network_transmit_bytes_total[5m])
+
+  - name: database_rules
+    interval: 30s
+    rules:
+      - record: pg:connections:active
+        expr: pg_stat_activity_count
+
+      - record: pg:connections:idle
+        expr: pg_stat_activity_count{state="idle"}
+
+      - record: pg:transactions:duration_max
+        expr: pg_stat_activity_max_tx_duration
+
+      - record: pg:database_size:bytes
+        expr: pg_database_size_bytes
+
+  - name: redis_rules
+    interval: 30s
+    rules:
+      - record: redis:memory:used:bytes
+        expr: redis_memory_used_bytes
+
+      - record: redis:memory:max:bytes
+        expr: redis_memory_max_bytes
+
+      - record: redis:connections:total
+        expr: redis_connections_total
+
+      - record: redis:commands:processed:rate5m
+        expr: rate(redis_commands_processed_total[5m])

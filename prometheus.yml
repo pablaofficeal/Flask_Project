@@ -1,0 +1,103 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    monitor: 'c_sharp_monitor'
+    environment: 'production'
+    datacenter: 'dc1'
+    
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+            - alertmanager:9093
+
+# Load rules once and periodically evaluate them
+rule_files:
+  - "alerts/*.yml"
+  - "recording_rules/*.yml"
+
+scrape_configs:
+  # Prometheus itself
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['prometheus:9090']
+        labels:
+          service: 'prometheus'
+          environment: 'production'
+
+  # FastAPI Application
+  - job_name: 'fastapi_app'
+    static_configs:
+      - targets: ['app:8003']
+        labels:
+          service: 'fastapi'
+          environment: 'production'
+    scrape_interval: 10s
+    metrics_path: '/metrics'
+    params:
+      format: ['prometheus']
+
+  # PostgreSQL Database
+  - job_name: 'postgres_exporter'
+    static_configs:
+      - targets: ['postgres_exporter:9187']
+        labels:
+          service: 'postgresql'
+          environment: 'production'
+    scrape_interval: 30s
+
+  # Redis
+  - job_name: 'redis_exporter'
+    static_configs:
+      - targets: ['redis_exporter:9121']
+        labels:
+          service: 'redis'
+          environment: 'production'
+    scrape_interval: 30s
+
+  # Node Exporter for system metrics
+  - job_name: 'node_exporter'
+    static_configs:
+      - targets: ['node_exporter:9100']
+        labels:
+          service: 'node'
+          environment: 'production'
+    scrape_interval: 15s
+
+  # Nginx metrics
+  - job_name: 'nginx_exporter'
+    static_configs:
+      - targets: ['nginx_exporter:9113']
+        labels:
+          service: 'nginx'
+          environment: 'production'
+    scrape_interval: 15s
+
+  # Loki metrics
+  - job_name: 'loki'
+    static_configs:
+      - targets: ['loki:3100']
+        labels:
+          service: 'loki'
+          environment: 'production'
+    metrics_path: '/metrics'
+
+  # Grafana metrics
+  - job_name: 'grafana'
+    static_configs:
+      - targets: ['grafana:3000']
+        labels:
+          service: 'grafana'
+          environment: 'production'
+    metrics_path: '/metrics'
+
+  # Docker containers metrics
+  - job_name: 'docker'
+    static_configs:
+      - targets: ['cadvisor:8080']
+        labels:
+          service: 'docker'
+          environment: 'production'
+    scrape_interval: 15s

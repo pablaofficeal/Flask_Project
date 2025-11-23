@@ -1,0 +1,12 @@
+FROM python:3.12.9
+
+COPY . /app
+
+WORKDIR /app
+
+# Создаем директорию для логов
+RUN mkdir -p /var/log/app
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+CMD ["python", "backend/app_prod.py"]
