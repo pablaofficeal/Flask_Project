@@ -1,18 +1,11 @@
 from flask import Blueprint, render_template
-from models.main_rou_imp_db import User, Post
+from models.main_rou_imp_db import User
 from models.imp import db
-from flask_login import current_user, login_required
-
 
 homes_bpp = Blueprint('homes_bpp', __name__)
 
 @homes_bpp.route('/home')
-@login_required
 def home():
-    print("AUTH:", current_user.is_authenticated)
-    print("USER:", current_user.get_id())
-    # Получаем все посты из базы данных
-    posts = Post.query.all()
-    timestamp = db.func.now()
-    # Получаем  пользователя из базы данных
-    return render_template('home.html', user=current_user, posts=posts, timestamp=timestamp)
+    
+    users = User.query.all()
+    return render_template('home.html', users=users)

@@ -3,8 +3,6 @@ from api.create_post_api import create_post
 from models.main_rou_imp_db import Post
 from models.imp import db
 from datetime import datetime
-from flask_login import current_user, login_required    
-
 
 create_post_bpp = Blueprint('create_post_bpp', __name__)
 
@@ -12,12 +10,12 @@ create_post_bpp = Blueprint('create_post_bpp', __name__)
 def create_post():
     if request.method == 'POST':
         # Проверяем, авторизован ли пользователь
-        if not current_user.is_authenticated:
+        if 'user_id' not in session:
             return redirect(url_for('login_bpp.login'))
         
         title = request.form['title']
         content = request.form['content']
-        user_id = current_user.id
+        user_id = session['user_id']
         
         new_post = Post(
             title=title, 
