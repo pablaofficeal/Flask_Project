@@ -27,7 +27,6 @@ def login():
         
         if user and user.password == password:
             session.permanent = True
-            login_user(user, remember=True)
             user.last_login = datetime.now()
             db.session.commit()
             return redirect(url_for('homes_bpp.home'))
