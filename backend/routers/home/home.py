@@ -13,5 +13,6 @@ def home():
     print("USER:", current_user.get_id())
     # Получаем все посты из базы данных
     posts = Post.query.all()
+    timestamp = db.func.now()
     # Получаем  пользователя из базы данных
-    return render_template('home.html', user=current_user, posts=posts)
+    return render_template('home.html', user=current_user, posts=posts, timestamp=timestamp)
