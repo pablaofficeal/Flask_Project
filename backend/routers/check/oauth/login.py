@@ -10,7 +10,6 @@ from flask import (
 )
 from models.main_rou_imp_db import User
 from flask import current_app
-from flask_login import login_user
 from datetime import datetime
 from models.imp import db
 
