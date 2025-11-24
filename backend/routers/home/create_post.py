@@ -22,5 +22,13 @@ def create_post():
         )
         db.session.add(new_post)
         db.session.commit()
-        return redirect(url_for('homes_bpp.home'))
+        return redirect(urls_for('homes_bpp.home'))
     return render_template('create-post.html')
+
+@create_post_bpp.errorhandler(500)
+def internal_server_error(error):
+    return render_template('errors/500.html'), 500
+
+@create_post_bpp.errorhandler(451)
+def unavailable_for_legal_reasons(error):
+    return render_template('errors/451.html'), 451

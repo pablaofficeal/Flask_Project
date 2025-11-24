@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 
-*,
-*::before,
-*::after {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -21,13 +19,11 @@
 }
 
 body {
-    font-family: 'Inter', sans-serif;
     background: var(--bg);
     color: var(--text);
-    min-height: 100vh;
     background-image: radial-gradient(circle at 10% 20%, rgba(255, 107, 0, 0.12), transparent 20%),
                       radial-gradient(circle at 90% 80%, rgba(224, 38, 126, 0.12), transparent 20%);
-    line-height: 1.6;
+    max-width: 100%;
 }
 
 /* ====================== НАВИГАЦИЯ ====================== */
@@ -115,7 +111,7 @@ body {
 
 /* ====================== POSTS ====================== */
 .post-container {
-    max-width: 100%;
+    max-width: 1200px;
     margin: 4rem auto;
     padding: 0 2rem;
     display: grid;
@@ -154,6 +150,21 @@ body {
     font-size: 0.9rem;
     color: var(--accent);
     font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .post-container {
+        max-width: 700px;
+        margin: 0 auto;
+        margin-bottom: 2rem;
+        min-width: 360px;
+    }
+    .post {
+        max-width: 700px;
+        margin: 0 auto;
+        margin-bottom: 2rem;
+        min-width: 360px;
+    }
 }
 
 /* ====================== ФОРМА СОЗДАНИЯ ПОСТА — КРАСИВО ====================== */
