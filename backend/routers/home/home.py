@@ -14,3 +14,7 @@ def home():
         posts = Post.query.filter_by(user_id=user.id).order_by(Post.timestamp.desc()).all()
     
     return render_template('home.html', user=user, posts=posts)
+# делаем костомную страницу с ошибкуй 500
+@homes_bpp.errorhandler(500)
+def internal_server_error(error):
+    return render_template('errors/500.html'), 500

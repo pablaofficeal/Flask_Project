@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internal Server Error</title>
+    <link rel="stylesheet" href="/static/css/index.css">
+    <style>
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <!-- Анимированный фон -->
+        <div class="error-bg">
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+            <div class="floating-shape shape-3"></div>
+        </div>
+
+        <!-- Основной контент -->
+        <div class="error-number glitch" data-text="500">500</div>
+        
+        <div class="error-content">
+            <h1>Internal Server Error</h1>
+            <p>Oops! Something went wrong on our end. Our technical team has been notified and is working to fix the issue. Please try again later.</p>
+            <a href="/" class="home-button">Back to Home</a>
+        </div>
+    </div>
+
+    <script>
+        // Добавляем случайные помехи для эффекта глитча
+        document.addEventListener('DOMContentLoaded', function() {
+            const glitch = document.querySelector('.glitch');
+            
+            setInterval(() => {
+                glitch.style.transform = `translate(${Math.random() * 4 - 2}px, ${Math.random() * 4 - 2}px)`;
+                setTimeout(() => {
+                    glitch.style.transform = 'translate(0, 0)';
+                }, 100);
+            }, 3000);
+        });
+    </script>
+</body>
+</html>

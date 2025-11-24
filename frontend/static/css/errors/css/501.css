@@ -1,0 +1,259 @@
+.error-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.error-number {
+    font-size: 25rem;
+    font-weight: 900;
+    background: linear-gradient(45deg, var(--accent), var(--accent-2), #ff0080);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 0 80px rgba(255, 107, 0, 0.3);
+    animation: float 6s ease-in-out infinite;
+}
+
+.error-content {
+    position: relative;
+    z-index: 3;
+    max-width: 600px;
+}
+
+.error-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(90deg, var(--text), var(--text-muted));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.error-content p {
+    font-size: 1.3rem;
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+    line-height: 1.6;
+}
+
+.home-button {
+    display: inline-block;
+    padding: 1.2rem 3rem;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: all 0.4s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(255, 107, 0, 0.3);
+}
+
+.home-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(255, 107, 0, 0.5);
+}
+
+/* Анимированный фон */
+.error-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.1;
+}
+
+.floating-shape {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(45deg, var(--accent), var(--accent-2));
+    animation: float 8s ease-in-out infinite;
+}
+
+.shape-1 {
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    left: 5%;
+    animation-delay: 0s;
+}
+
+.shape-2 {
+    width: 200px;
+    height: 200px;
+    top: 60%;
+    right: 10%;
+    animation-delay: -2s;
+}
+
+.shape-3 {
+    width: 150px;
+    height: 150px;
+    bottom: 20%;
+    left: 20%;
+    animation-delay: -4s;
+}
+
+.glitch {
+    position: relative;
+    animation: glitch 5s infinite;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch::before {
+    animation: glitch-top 1s infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+}
+
+.glitch::after {
+    animation: glitch-bottom 1.5s infinite;
+    clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+    -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(5deg);
+    }
+}
+
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+    }
+
+    20% {
+        transform: translate(-2px, 2px);
+    }
+
+    40% {
+        transform: translate(-2px, -2px);
+    }
+
+    60% {
+        transform: translate(2px, 2px);
+    }
+
+    80% {
+        transform: translate(2px, -2px);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+}
+
+@keyframes glitch-top {
+
+    0%,
+    100% {
+        transform: translate(0);
+        opacity: 1;
+    }
+
+    50% {
+        transform: translate(2px, -2px);
+        opacity: 0.8;
+    }
+}
+
+@keyframes glitch-bottom {
+
+    0%,
+    100% {
+        transform: translate(0);
+        opacity: 1;
+    }
+
+    50% {
+        transform: translate(-2px, 2px);
+        opacity: 0.8;
+    }
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+    .error-number {
+        font-size: 20rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .error-number {
+        font-size: 15rem;
+    }
+
+    .error-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .error-content p {
+        font-size: 1.1rem;
+    }
+
+    .shape-1 {
+        width: 200px;
+        height: 200px;
+    }
+
+    .shape-2 {
+        width: 150px;
+        height: 150px;
+    }
+
+    .shape-3 {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    .error-number {
+        font-size: 10rem;
+    }
+
+    .error-content h1 {
+        font-size: 2rem;
+    }
+
+    .error-content p {
+        font-size: 1rem;
+    }
+
+    .home-button {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+    }
+}
